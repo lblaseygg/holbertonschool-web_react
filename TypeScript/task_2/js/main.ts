@@ -46,7 +46,9 @@ function createEmployee(salary: number): string {
 
 //task6 creating functions
 function isDirector(employee: any): employee is Director {
-    return employee.workDirectorTasks !== undefined;
+    if (employee.workDirectorTasks !== undefined) {
+        return true;
+    } else {
+        return false;
+    }
 }
-
-//task6 write function executeWork
