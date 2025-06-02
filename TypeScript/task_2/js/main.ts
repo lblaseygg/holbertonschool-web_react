@@ -45,10 +45,25 @@ function createEmployee(salary: number): string {
 }
 
 //task6 creating functions
-function isDirector(employee: any): employee is Director {
-    if (employee.workDirectorTasks !== undefined) {
-        return true;
+function isDirector(employee: Director | Teacher): employee is Director {
+    return (employee as Director).workDirectorTasks() !== undefined;
+}
+
+function executeWork (employee: Director | Teacher): string {
+    if (isDirector(employee)) {
+        return employee.workDirectorTasks()
     } else {
-        return false;
+        return employee.workTeacherTasks()
+    }
+}
+
+//task7 string literal types
+type Subjects = "Math" | "History";
+
+function teachClass (todayClass: Subjects): string {
+    if (todayClass === "Math") {
+        return "Teaching Math"
+    } else {
+        return "Teaching History"
     }
 }
